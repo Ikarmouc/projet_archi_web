@@ -2,6 +2,7 @@
 {
     display: flex;
     margin :20%;
+    align-items: center;
     justify-content: space-around;
 }
 
@@ -10,12 +11,14 @@
     border-radius: 10px;
     background: #fff;
     box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
-    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    transition: .1s transform cubic-bezier(.155,1.105,.295,1.12),.1s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
     cursor: pointer;
+    margin: 10px;
 }
 
 .card:hover{
-    transform: scale(1.25);
+
+    transform: scale(1.1);
     box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
 }
 
@@ -24,3 +27,23 @@
     display: flex;
     justify-content: center;
 }
+
+.add{
+    border-radius: 10px;
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    transition: .1s transform cubic-bezier(.155,1.105,.295,1.12),.1s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    cursor: pointer;
+}
+
+.add:hover{
+    transform: scale(1.5);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
+form
+{
+    margin-top: 10%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
