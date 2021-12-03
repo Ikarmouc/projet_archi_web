@@ -1,5 +1,6 @@
 <?php
-require ('../Controller/connexion.php');
+require('./connexion.php');
+require('./header.php');
 session_abort();
 
     if($_POST)
@@ -12,7 +13,7 @@ session_abort();
         {
             session_start();
             $_SESSION["username"] = htmlspecialchars($_POST["username"]);
-
+            $_SESSION["id_user"] = $result[0]['id_user'];
             if ($_POST["username"] == "Admin")
             {
                 $_SESSION["isAdmin"] = true;
@@ -32,29 +33,6 @@ session_abort();
 <!doctype html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- Police d'ecriture-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100&display=swap" rel="stylesheet">
-    <!-- CSS only -->
-    <link href="style.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <title>The science place</title>
-    <style>
-        body {
-            background-image: url('../img/background.jpg');
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-        }
-    </style>
 
 </head>
 
@@ -65,7 +43,7 @@ session_abort();
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                 <div class="card bg-dark text-white" style="border-radius: 1rem;">
-                    <div class="card-body p-5 text-center">
+                    <div class="card-body p-2 text-center">
                         <form method="post" name="loginForm">
                             <h2 >Connectez vous</h2>
                             <div class="form-outline form-white mb-4">
@@ -76,8 +54,10 @@ session_abort();
                                 <label class="form-label" for="password">Mot de passe </label>
                                 <input type="password" id="password"  name="password" class="form-control form-control-lg"  placeholder="**********" required/>
                             </div>
-
-                            <input class="btn btn-outline-light btn-lg px-5" type="submit" value="Connexion" name="Connexion" >
+                            <div style="display: flex; justify-content: center;flex-direction: column">
+                                <input class="btn btn-outline-light btn-lg px-5" type="submit" value="Connexion" name="Connexion" >
+                                <a class="btn btn-outline-light btn-lg px-5" href="register.php">Inscription </a>
+                            </div>
 
                         </form>
 
@@ -89,6 +69,6 @@ session_abort();
 </section>
 </body>
 
-<?php require('../footer.php')?>
+<?php require('./footer.php') ?>
 
 </html>

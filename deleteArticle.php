@@ -1,14 +1,13 @@
 <?php
-include ('./Controller/connexion.php');
+include('./connexion.php');
 include ('./header.php');
 
 $connexion = connexionBd();
-if(isset($_GET["nomArticle"]))
+if(isset($_GET["id_Article"]))
 {
-    $params = htmlspecialchars('\''.$_GET["nomArticle"].'\'');
-    $sql=" DELETE FROM `article` WHERE `nomArticle` =".$params.";";
-    var_dump($sql);
-    $count=$connexion->exec($sql);
+    $params = intval($_GET["id_Article"]);
+    $sqlDeleteArticle=" DELETE  FROM `article` WHERE `id_article` =".$params;
+    $count=$connexion->exec($sqlDeleteArticle);
     header("Location: index.php");
 }
 

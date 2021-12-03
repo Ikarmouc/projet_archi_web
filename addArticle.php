@@ -1,11 +1,10 @@
 <?php
-include ('./Controller/connexion.php');
+include('./connexion.php');
 include ('./header.php');
 if($_POST!= null)
 {
     $connexion = connexionBd();
     $nomArticle = htmlspecialchars($_POST['nomArticle']);
-    //$description = $_POST['description'];
     $description = htmlspecialchars(str_replace("'", "''", $_POST['description']));
     $typeArticle = htmlspecialchars($_POST['typeArticle']);
     $credits = htmlspecialchars($_POST['credits']);
@@ -49,8 +48,12 @@ if($_POST!= null)
         <label class="form-label" for="credits" >Credits de l'article</label>
     </div>
 
-    <input type="submit" name="send" value="Envoyer" />
-
+    <div class="text-center">
+        <input class="btn btn-success" type="submit" name="send" value="Valider la création d'article" />
+        <button class="btn btn-danger">
+            <a href="./index.php" style="color: inherit">Retour</a>
+        </button>
+    </div>
 </form>
 
 </body>

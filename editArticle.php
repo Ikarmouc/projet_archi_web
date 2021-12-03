@@ -1,12 +1,12 @@
 <?php
-include ('./Controller/connexion.php');
+include('./connexion.php');
 include ('./header.php');
 $connexion = connexionBd();
 
-if(isset($_GET["nomArticle"]))
+if(isset($_GET["id_Article"]))
 {
-    $params = (str_replace("'", "''",$_GET["nomArticle"]));
-    $sql="Select * from article where nomArticle= '$params';";
+    $params = intval($_GET["id_Article"]);
+    $sql="Select * from article where id_article=".$params;
     $result = $connexion->query($sql);
     $Article = $result->fetchAll(PDO::FETCH_ASSOC);
 

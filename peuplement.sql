@@ -14,10 +14,45 @@ INSERT INTO thescienceplace.article (id_article, nomArticle, description, typeAr
 
 create table user
 (
-    id_user  int          not null,
+    id_user  int auto_increment
+        primary key,
+    nom      varchar(255) not null,
+    prenom   varchar(255) not null,
+    adresse  varchar(255) not null,
     username varchar(256) not null,
-    password varchar(256) not null
+    password varchar(256) not null,
+    email    varchar(255) not null
+);
+
+INSERT INTO thescienceplace.user (id_user, nom, prenom, adresse, username, password, email) VALUES (1, 'Admin', 'The science Place', 'NULL', 'Admin', '$2y$10$FnYItZ3SgntoweH3sAQv6.flgbhMB7/SixYnfXmX72Mu.szsHbRSu', 'admin-thescienceplace@test.com');
+
+create table event
+(
+    id_event        int auto_increment
+        primary key,
+    typeEvent       varchar(255) not null,
+    article         int          not null,
+    description     text         not null,
+    remainingPlaces int          not null,
+    placesLimit     int          not null,
+    dateEvent       datetime     not null,
+    constraint id_article
+        foreign key (article) references article (id_article)
+);
+
+create table reservation
+(
+    id_reservation int auto_increment
+        primary key,
+    id_user        int not null,
+    id_event       int not null,
+    nbplaces       int not null,
+    constraint id_event
+        foreign key (id_event) references event (id_event),
+    constraint id_user
+        foreign key (id_user) references user (id_user)
 );
 
 
-INSERT INTO thescienceplace.user (id_user, username, password) VALUES (1, 'Admin', '$2y$10$FnYItZ3SgntoweH3sAQv6.flgbhMB7/SixYnfXmX72Mu.szsHbRSu');
+
+
