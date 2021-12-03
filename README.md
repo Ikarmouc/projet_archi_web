@@ -157,7 +157,7 @@ create table reservation
         foreign key (id_user) references user (id_user)  
 );
 ``` 
-<strong>Par manque de temps, les user story numéro 10 et 14 ont été embarqué dans le prochain sprint.
+<strong>Par manque de temps, les user story numéro 10,12 et 14 ont été embarqué dans le prochain sprint.
 </strong>
 
 
@@ -166,8 +166,9 @@ create table reservation
 |N°|User story|Valeur/Importance|Note|Critère|  
 |-----|----------|--|--|--|--|  
 |10|En tant qu'administrateur, je souhaite pouvoir consulter les participant d'un evenement |3|||
+|12|En tant qu'administrateur, je souhaite pouvoir retirer une réservation d'utilisateur |1|||
 |14|En tant qu'utilisateur,  je souhaite pouvoir modifier mes réservations|1|||
 
 
 <strong>Ce sprint a pour objectif de faire des corrections de bug, mais aussi d'effectuer un nettoyage de code ainsi qu'une préparation en vue d'un changement  l'architecture de ce projet afin de respecter le modele MVC ou Model View Controller
-L'user story 10 et 14 ont été embarqué  car elles n'ont pas été réalisé lors du dernier sprint</strong>
+Les users stories 10,12 et 14 ont été embarqué  car elles n'ont pas été réalisé lors du dernier sprint</strong>
