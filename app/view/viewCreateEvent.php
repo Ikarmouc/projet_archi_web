@@ -1,41 +1,10 @@
 <?php
-include('./connexion.php');
-include ('./header.php');
-$connexion = connexionBd();
-$params = htmlspecialchars($_GET["id_Article"]);
-$sql = "select nomArticle from article where id_article = '$params'";
-$exec = $connexion->query($sql);
-$article = $exec->fetch(PDO::FETCH_ASSOC);
-if($_POST!= null)
-{
-    $typeEvent = htmlspecialchars($_POST['typeEvent']);
-    $description = htmlspecialchars($_POST['description']);
-    $placesLimit = htmlspecialchars($_POST['placesLimit']);
-    $articleId = htmlspecialchars($_GET["id_Article"]);
-    $remainingPlaces = $placesLimit;
-    $dateEvent = htmlspecialchars($_POST['dateEvent'].":00");
-    $dateEvent = str_replace("T"," ",$dateEvent);
-    $sqlNewEvent = "insert into event(typeEvent,article,description,remainingPlaces,placesLimit,dateEvent) values ('$typeEvent','$articleId', '$description','$remainingPlaces','$placesLimit','$dateEvent')".';';
-    var_dump($sqlNewEvent);
-    $count=$connexion->exec($sqlNewEvent);
-    header("Location: viewArticle.php?id_Article=".$_GET["id_Article"]);
-
-}
+namespace app\view;
+include ("app/view/header.php")
 ?>
 
-<!doctype html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ajout d'un nouvel evenement </title>
-</head>
-<body>
-
 <div class="d-center p-1 bg-dark text-white" style="display: flex; justify-content: center;color: white;">
-    <h1> Ajout d'un evenement en lien avec <?=$article["nomArticle"]?></h1>
+    <h1> Ajout d'un evenement en lien avec <?=$nomArticle?></h1>
 </div>
 <form method="post">
     <div class="form-group">
@@ -63,10 +32,12 @@ if($_POST!= null)
     <div class="text-center">
         <input class="btn btn-success" type="submit" name="send" value="Valider la création d'evenement" />
         <button class="btn btn-danger">
-            <a href="./viewArticle.php?id_Article=<?=$_GET["id_Article"];?>" style="color: inherit">Retour</a>
+            <a href="?action=getArticle&id_article=<?=$_GET["id_article"];?>" style="color: inherit">Retour</a>
         </button>
     </div>
 </form>
 
-</body>
-</html>
+<?php
+include ("app/view/footer.php");
+?>
+

@@ -1,33 +1,5 @@
 <?php
-require('./connexion.php');
-require('./header.php');
-session_abort();
-
-    if($_POST)
-    {
-        $sql =  "Select * from user where username='". htmlspecialchars($_POST["username"])."';";
-        $connexion = connexionBd();
-        $result = $connexion->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-        $pwdhash = $result[0]["password"];
-        if(password_verify(htmlspecialchars($_POST["password"]),$pwdhash))
-        {
-            session_start();
-            $_SESSION["username"] = htmlspecialchars($_POST["username"]);
-            $_SESSION["id_user"] = $result[0]['id_user'];
-            if ($_POST["username"] == "Admin")
-            {
-                $_SESSION["isAdmin"] = true;
-            }
-            else
-            {
-                $_SESSION["isAdmin"] = false;
-            }
-            header("Location: ../index.php");
-        }
-
-}
-
-
+namespace app\view;
 ?>
 
 <!doctype html>
@@ -37,7 +9,7 @@ session_abort();
 </head>
 
 <body>
-
+<?php include ("app/view/header.php")?>
 <section class="vh-100 gradient-custom">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -56,11 +28,10 @@ session_abort();
                             </div>
                             <div style="display: flex; justify-content: center;flex-direction: column">
                                 <input class="btn btn-outline-light btn-lg px-5" type="submit" value="Connexion" name="Connexion" >
-                                <a class="btn btn-outline-light btn-lg px-5" href="register.php">Inscription </a>
+                                <a class="btn btn-outline-light btn-lg px-5" href="?action=register">Inscription </a>
                             </div>
 
                         </form>
-
                     </div>
                 </div>
             </div>
@@ -69,6 +40,6 @@ session_abort();
 </section>
 </body>
 
-<?php require('./footer.php') ?>
+<?php require('app/view/footer.php') ?>
 
 </html>

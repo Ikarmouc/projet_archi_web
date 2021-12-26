@@ -1,4 +1,12 @@
 
+body {
+    background-image: url('./img/background.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding-bottom: 70px;
+}
 .listeArticle
 {
     display: flex;
@@ -46,5 +54,20 @@ form
     margin-top: 10%;
     margin-left: 25%;
     margin-right: 25%;
+}
+
+.error{
+    display: flex;
+    align-content: center;
+}
+
+footer{
+    margin-top: 25%;
+    position: absolute;
+    bottom: 0;
+    padding-top:50px;
+
+    height:50px;
+
 }
 
