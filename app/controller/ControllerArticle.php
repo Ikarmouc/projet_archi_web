@@ -25,7 +25,7 @@ class ControllerArticle
     {
         $result = $this->model->findAll();
 
-        include ("app/view/getAllArticles.php");
+        include("app/view/viewGetAllArticles.php");
     }
 
     /**
