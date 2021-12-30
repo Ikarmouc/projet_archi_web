@@ -33,7 +33,6 @@ class ModelUser extends Model
 
     public function create($data): int
     {
-
         $result = parent::create($data);
         return $result;
     }

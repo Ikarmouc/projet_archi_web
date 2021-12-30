@@ -29,13 +29,10 @@ class Model{
      */
     public function find(int $id) : array
     {
-
         $sql="SELECT * FROM ".$this->table." WHERE id_".$this->table."=".$id;
         $retour=$this->connexion->query($sql);
         $content=$retour->fetch(PDO::FETCH_ASSOC);
-
         return $content;
-
     }
 
     /**
